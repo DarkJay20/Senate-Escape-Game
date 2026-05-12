@@ -4,7 +4,7 @@
 const CONFIG = {
     laneWidth: 3,
     chunkLength: 30,
-    baseSpeed: 0.2, 
+    baseSpeed: 0.5, 
     maxSpeed: 1.5,  
     speedAcceleration: 0.0002, 
     gravity: -0.02, 
