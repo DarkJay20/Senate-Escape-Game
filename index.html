@@ -15,15 +15,15 @@
 
     <div class="hud" id="hud">
         <div class="hud-item">
-            <span class="hud-label">🏃 Distance</span>
+            <span class="hud-label">🏃 <span class="hide-mobile">Distance</span></span>
             <span class="hud-value" id="dist-display">0m</span>
         </div>
         <div class="hud-item">
-            <span class="hud-label">⭐ Total Score</span>
+            <span class="hud-label">⭐ <span class="hide-mobile">Score</span></span>
             <span class="hud-value" id="score-display">0</span>
         </div>
         <div class="hud-item">
-            <span class="hud-label">💵 Cash</span>
+            <span class="hud-label">💵 <span class="hide-mobile">Cash</span></span>
             <span class="hud-value" id="coin-display">₱0</span>
         </div>
     </div>
@@ -35,7 +35,7 @@
             <div class="controls-hint">
                 <p style="margin:0 0 10px 0;"><b>DESKTOP:</b> Arrow Keys or W, A, S, D<br>
                 <b>MOBILE:</b> Swipe 👆 👇 👈 👉</p>
-                <i>Jump over chairs & papers.<br>Slide under tables & barriers.<br><b>Swipe/Press Left/Right at intersections to turn!</b></i>
+                <i>Jump over chairs & papers.<br>Slide under tables & barriers.<br><b>Swipe Left/Right at intersections!</b></i>
             </div>
             <br>
             <button onclick="startGame()">Start Hearing</button>
@@ -45,7 +45,7 @@
     <div class="ui-layer" id="game-over-screen">
         <div class="screen">
             <div class="high-score-badge" id="end-best-score" style="display:block;">BEST: 0</div>
-            <h1 style="color: var(--senate-red); border-color: var(--senate-gold);">You have been caught</h1>
+            <h1 style="color: var(--senate-red); border-color: var(--senate-gold);">You were caught</h1>
             <div class="final-stats"><span>Distance:</span> <span id="final-dist">0m</span></div>
             <div class="final-stats"><span>Cash:</span> <span id="final-coins">₱0</span></div>
             <div class="final-stats highlight"><span>Total Score:</span> <span id="final-score">0</span></div>
