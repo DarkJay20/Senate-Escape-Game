@@ -1,0 +1,163 @@
+:root {
+    --senate-red: #8B0000;
+    --senate-gold: #D4AF37;
+    --senate-bg: #F4F1EA;
+    --senate-wood: #5C4033;
+    --text-color: #222;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    font-family: 'Times New Roman', Times, serif;
+    touch-action: none; /* Prevent browser refreshing on swipe */
+}
+
+#game-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Screen Shake Effect */
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-8px, -4px) rotate(-1deg); }
+    20%, 40%, 60%, 80% { transform: translate(8px, 4px) rotate(1deg); }
+}
+.shake-screen { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+
+/* UI Overlays */
+.ui-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Upgraded HUD styling */
+.hud {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    color: var(--senate-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    display: none; /* Hidden on start screen */
+    z-index: 20;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+.hud-label {
+    font-size: 13px;
+    color: #ddd;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hud-value {
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Cash Pop Animation */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.6); color: #4CAF50; text-shadow: 0 0 15px #4CAF50; }
+    100% { transform: scale(1); }
+}
+.pop-anim { animation: pop 0.3s ease-out; }
+
+.screen {
+    background: var(--senate-bg);
+    border: 6px double var(--senate-gold);
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+    pointer-events: auto;
+    position: relative;
+}
+
+h1 {
+    color: var(--senate-red);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 0;
+    border-bottom: 2px solid var(--senate-gold);
+    padding-bottom: 10px;
+}
+
+.high-score-badge {
+    position: absolute;
+    top: -20px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--senate-gold);
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    display: none;
+}
+
+p { color: var(--text-color); font-size: 18px; line-height: 1.5; margin-bottom: 30px; }
+.controls-hint { color: #555; font-size: 15px; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 5px;}
+
+button {
+    background: var(--senate-red); color: white;
+    border: 2px solid var(--senate-gold);
+    padding: 15px 40px; font-size: 20px;
+    font-family: inherit; font-weight: bold;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 3px; transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+button:hover {
+    background: var(--senate-gold); color: var(--senate-red);
+    transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+button:active { transform: translateY(1px); }
+
+#game-over-screen { display: none; }
+
+.final-stats {
+    color: var(--senate-wood); font-size: 22px; margin-bottom: 10px;
+    font-weight: bold; display: flex; justify-content: space-between;
+    width: 250px; margin-left: auto; margin-right: auto;
+    border-bottom: 1px dashed #ccc; padding-bottom: 5px;
+}
+.final-stats.highlight {
+    color: var(--senate-red); font-size: 28px; border-bottom: none;
+    margin-top: 15px; margin-bottom: 25px; text-shadow: 1px 1px 0 var(--senate-gold);
+}
+.record-alert {
+    color: #4CAF50; font-size: 16px; font-weight: bold;
+    margin-top: -15px; margin-bottom: 15px; display: none;
+}
